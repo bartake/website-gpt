@@ -1,1 +1,0 @@
-# Protolabs Scrapy spider

@@ -1,6 +1,6 @@
 # Amazon Bedrock Knowledge Base + LLM Setup
 
-This guide walks through configuring the Protolabs RAG pipeline to use **Amazon Bedrock Knowledge Base** (vector store) and **Bedrock LLM** instead of Chroma + Ollama.
+This guide walks through configuring the My Company RAG pipeline to use **Amazon Bedrock Knowledge Base** (vector store) and **Bedrock LLM** instead of Chroma + Ollama.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ This guide walks through configuring the Protolabs RAG pipeline to use **Amazon 
 1. Go to **AWS Console** → **Amazon Bedrock** → **Knowledge bases**
 2. Click **Create knowledge base**
 3. **Quick create** (recommended): Uses default settings; creates OpenSearch Serverless + S3 automatically
-   - Give it a name (e.g. `protolabs-kb`)
+   - Give it a name (e.g. `my-company-kb`)
    - Note the **Knowledge base ID** and **Data source ID** from the summary
    - Note the **S3 URI** for the data source (e.g. `s3://your-bucket-name/`)
 4. Or **Custom create**: Configure vector store (OpenSearch, Aurora, Pinecone) and S3 data source manually
@@ -26,7 +26,7 @@ Set these in `config_bedrock.py` or as environment variables:
 export BEDROCK_KNOWLEDGE_BASE_ID="XXXXXXXXXX"
 export BEDROCK_DATA_SOURCE_ID="YYYYYYYYYY"
 export BEDROCK_S3_BUCKET="your-bucket-name"
-export BEDROCK_S3_PREFIX="protolabs-docs/"
+export BEDROCK_S3_PREFIX="my-company-docs/"
 export BEDROCK_MODEL_ID="anthropic.claude-3-5-sonnet-20241022-v2:0"
 export AWS_REGION="us-east-1"
 ```
@@ -60,9 +60,9 @@ This will:
 ## Step 5: Query
 
 ```bash
-python rag_bedrock.py "What CNC machining tolerances does Protolabs offer?"
-python rag_bedrock.py "What materials are available for injection molding?"
-python rag_bedrock.py "PEEK tensile strength" --retrieve-only
+python rag_bedrock.py "What services does My Company offer?"
+python rag_bedrock.py "What are your support hours?"
+python rag_bedrock.py "shipping policy" --retrieve-only
 ```
 
 ## IAM Permissions Required

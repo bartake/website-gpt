@@ -34,7 +34,7 @@ PAGES_FILE = DATA_DIR / "pages.jsonl"
 def main():
     if not PAGES_FILE.exists():
         print(f"Error: {PAGES_FILE} not found. Run the crawler first:")
-        print("  cd crawler && scrapy crawl protolabs")
+        print("  cd crawler && scrapy crawl my_company")
         return 1
 
     if not BEDROCK_KNOWLEDGE_BASE_ID or not BEDROCK_DATA_SOURCE_ID:
@@ -118,7 +118,7 @@ def main():
         return 1
 
     print("\nIngestion complete. You can now run:")
-    print("  python rag_bedrock.py 'What CNC machining tolerances does Protolabs offer?'")
+    print("  python rag_bedrock.py 'What services does My Company offer?'")
     return 0
 
 

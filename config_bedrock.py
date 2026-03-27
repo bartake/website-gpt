@@ -10,7 +10,7 @@ BEDROCK_DATA_SOURCE_ID = os.getenv("BEDROCK_DATA_SOURCE_ID", "")
 
 # S3 bucket for document ingestion (must be in same region as KB)
 BEDROCK_S3_BUCKET = os.getenv("BEDROCK_S3_BUCKET", "")
-BEDROCK_S3_PREFIX = os.getenv("BEDROCK_S3_PREFIX", "protolabs-docs/")
+BEDROCK_S3_PREFIX = os.getenv("BEDROCK_S3_PREFIX", "my-company-docs/")
 
 # Bedrock LLM for generation (retrieve_and_generate uses this)
 # Examples: anthropic.claude-3-5-sonnet-20241022-v2:0, meta.llama3-70b-instruct-v1:0

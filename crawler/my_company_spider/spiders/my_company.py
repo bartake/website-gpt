@@ -1,12 +1,14 @@
-"""Spider that crawls protolabs.com via sitemap and extracts content."""
-import re
+"""Spider that crawls the company site via sitemap and extracts content.
+
+Replace mycompany.com in allowed_domains and start_requests with your real domain.
+"""
 import scrapy
 import trafilatura
 
 
-class ProtolabsSpider(scrapy.Spider):
-    name = "protolabs"
-    allowed_domains = ["protolabs.com", "www.protolabs.com"]
+class MyCompanySpider(scrapy.Spider):
+    name = "my_company"
+    allowed_domains = ["mycompany.com", "www.mycompany.com"]
 
     custom_settings = {
         "DOWNLOAD_DELAY": 1,
@@ -16,7 +18,7 @@ class ProtolabsSpider(scrapy.Spider):
 
     def start_requests(self):
         yield scrapy.Request(
-            "https://www.protolabs.com/sitemap/",
+            "https://www.mycompany.com/sitemap/",
             callback=self.parse_sitemap_index,
         )
 

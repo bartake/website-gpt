@@ -1,0 +1,1 @@
+# My Company — Scrapy spider

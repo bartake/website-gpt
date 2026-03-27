@@ -1,4 +1,4 @@
-"""Run the Protolabs crawler. Output: data/pages.jsonl"""
+"""Run the My Company site crawler. Output: data/pages.jsonl"""
 import os
 import subprocess
 import sys
@@ -12,7 +12,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 def main():
     DATA_DIR.mkdir(exist_ok=True)
     result = subprocess.run(
-        [sys.executable, "-m", "scrapy", "crawl", "protolabs"],
+        [sys.executable, "-m", "scrapy", "crawl", "my_company"],
         cwd=str(CRAWLER_DIR),
     )
     return result.returncode

@@ -29,7 +29,7 @@ RERANK_TOP = 5
 def get_collection():
     ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name=EMBEDDING_MODEL)
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    return client.get_collection("protolabs", embedding_function=ef)
+    return client.get_collection("my_company", embedding_function=ef)
 
 
 def retrieve(collection, query: str, top_k: int = TOP_K, rerank_top: int = RERANK_TOP):
@@ -91,7 +91,7 @@ def main():
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
     if len(sys.argv) < 2:
         print("Usage: python rag.py <question> [--retrieve-only]")
-        print("Example: python rag.py 'What CNC machining tolerances does Protolabs offer?'")
+        print("Example: python rag.py 'What services does My Company offer?'")
         print("  --retrieve-only: show retrieved chunks only (no LLM call)")
         return 1
 

@@ -82,7 +82,7 @@ def main():
 
     if len(sys.argv) < 2:
         print("Usage: python rag_bedrock.py <question> [--retrieve-only]")
-        print("Example: python rag_bedrock.py 'What CNC machining tolerances does Protolabs offer?'")
+        print("Example: python rag_bedrock.py 'What services does My Company offer?'")
         print("  --retrieve-only: show retrieved chunks only (no LLM call)")
         return 1
 

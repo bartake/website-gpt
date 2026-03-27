@@ -1,6 +1,6 @@
-# Protolabs RAG Pipeline
+# My Company RAG Pipeline
 
-Crawl protolabs.com, embed content, and query it with a local LLM. **100% free and open source.**
+Crawl your company website (configure domains in the spider), embed content, and query it with a local LLM. **100% free and open source.**
 
 ## Prerequisites
 
@@ -10,10 +10,12 @@ Crawl protolabs.com, embed content, and query it with a local LLM. **100% free a
 ## Setup
 
 ```bash
-cd protolabs-rag
+cd <this-repo-folder>
 pip install -r requirements.txt
 ollama pull llama3.2
 ```
+
+Edit `crawler/my_company_spider/spiders/my_company.py` and set `allowed_domains` and the sitemap URL to match your real site.
 
 ## Usage
 
@@ -36,8 +38,8 @@ Downloads `all-MiniLM-L6-v2` (~80MB) on first run. Creates `chroma_db/`.
 ### 3. Query
 
 ```bash
-python rag.py "What CNC machining tolerances does Protolabs offer?"
-python rag.py "What materials are available for injection molding?"
+python rag.py "What services does My Company offer?"
+python rag.py "What are your support hours?"
 ```
 
 Ensure Ollama is running (`ollama serve` or `ollama run llama3.2`).
@@ -45,11 +47,11 @@ Ensure Ollama is running (`ollama serve` or `ollama run llama3.2`).
 ## Project structure
 
 ```
-protolabs-rag/
+<repo>/
 ├── crawler/              # Scrapy project
-│   └── protolabs_spider/
+│   └── my_company_spider/
 │       └── spiders/
-│           └── protolabs.py
+│           └── my_company.py
 ├── data/
 │   └── pages.jsonl      # Crawled pages (created by crawl)
 ├── chroma_db/           # Vector DB (created by ingest)

@@ -1,6 +1,6 @@
 """
 Ingest crawled pages: chunk, embed, store in Chroma.
-Run after: scrapy crawl protolabs (from crawler/)
+Run after: scrapy crawl my_company (from crawler/)
 """
 import json
 import os
@@ -34,7 +34,7 @@ def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVE
 def main():
     if not PAGES_FILE.exists():
         print(f"Error: {PAGES_FILE} not found. Run the crawler first:")
-        print("  cd crawler && scrapy crawl protolabs")
+        print("  cd crawler && scrapy crawl my_company")
         return 1
 
     print(f"Loading pages from {PAGES_FILE}...")
@@ -71,7 +71,7 @@ def main():
 
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
     collection = client.get_or_create_collection(
-        "protolabs",
+        "my_company",
         embedding_function=ef,
         metadata={"hnsw:space": "cosine"},
     )
